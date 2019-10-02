@@ -1,8 +1,13 @@
 class SessionsController < ApplicationController
 	def create
-		puts "💭 " * 50
+		puts '💭 ' * 50
 		pp(auth_hash)
-		raise auth_hash.to_yaml
+
+		user = User.from_omniauth(auth_hash)
+		#session[:user_id] = user.id
+		#self.current_user = @user
+		#redirect_to root_url, notice: 'Signed in!'
+		redirect_to '/', notice: 'Signed in!'
 	end
 
 	protected
