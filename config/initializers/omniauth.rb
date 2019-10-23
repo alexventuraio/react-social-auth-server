@@ -1,5 +1,6 @@
 OmniAuth.config.logger = Rails.logger
-OmniAuth.config.allowed_request_methods = [:post, :get]
+# Addresses https://nvd.nist.gov/vuln/detail/CVE-2015-9284
+OmniAuth.config.allowed_request_methods = [:post]
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :developer unless Rails.env.production?
